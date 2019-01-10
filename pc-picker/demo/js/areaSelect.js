@@ -345,6 +345,7 @@
 			oneLevelData.forEach(function(v, i, o) {
 				if (v.id == oneLevelId) {
 					oneHtml += '<li class="list_item area-list-item-'+self.theme+' active" '+selectUtil.attrToHtml(v)+'>'+v.value+'</li>';
+					plast = i;
 				} else {
 					oneHtml += '<li class="list_item area-list-item-'+self.theme+' " '+selectUtil.attrToHtml(v)+'>'+v.value+'</li>';
 				}
