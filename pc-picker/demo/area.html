@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/area.css">
+    <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
+</head>
+<body>
+    <div>省市区选择</div>
+    <span id="j-area-select">选择</span>
+    <div id="location_content" data-province-code="170100" data-city-code="170200" district-city-code="170201"></div>
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="../areaDataAll.js"></script>
+    <script  src="./js/areaSelect.js"></script>
+    <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+       
+        var selectContactDom = $('#j-area-select');
+        var showContactDom = $('#location_content');
+        var oneLevelId = showContactDom.attr('data-province-code');
+        var twoLevelId = showContactDom.attr('data-city-code');
+        var threeLevelId = showContactDom.attr('data-district-code');
+      
+        selectContactDom.on('click',function(){
+            showContactDom.show();
+             // 第一个参数是 省市区 级别
+            var areaSelect = new AreaSelect(3, [iosProvinces, iosCitys, iosCountys],{
+                wrapper:'#location_content',//显示地区的区域
+                oneLevelId: oneLevelId,//初始化的省code
+                twoLevelId: twoLevelId,//初始化市code
+                threeLevelId: threeLevelId,//初始化区code
+                theme:'green',//颜色  暂时提供 green blue版本
+                isScroll:true,//是否需要美化滚动条 需要引入一个jq jquery.mCustomScrollbar.concat.min.js插件和一个css jquery.mCustomScrollbar.css
+                callback: function(selectOneObj, selectTwoObj, selectThreeObj) {
+                    // console.log(selectOneObj);
+                    // console.log(selectTwoObj);
+                    // console.log(selectThreeObj);
+                }
+            });
+           
+        })
+    </script>
+</body>
+</html>

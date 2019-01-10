@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+        <link rel="dns-prefetch" href="//3gimg.qq.com" />
+        <link rel="dns-prefetch" href="//zxpic.gtimg.com" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no" />
+        <meta name="MobileOptimized" content="320" />
+        <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="copyright" content="" />
+        <meta name="keywords" content="找法网，法律快车，法律咨询" />
+        <meta name="description" content="" />
+        <meta name="x5-page-mode" content="no-title" />
+        <link rel="apple-touch-icon-precomposed" href="" />
+        <script>
+                !(function(win, doc){
+                        function setFontSize() {
+                                var baseFontSize = 100;
+                                var baseWidth = 320;
+                                var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+                                var innerWidth = Math.max(Math.min(clientWidth, 480), 320);
+
+                                var rem = 100;
+
+                                if (innerWidth > 362 && innerWidth <= 375) {
+                                        rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.9);
+                                }
+
+                                if (innerWidth > 375) {
+                                        rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.84);
+                                }
+
+                                window.__baseREM = rem;
+                                document.querySelector('html').style.fontSize = rem + 'px';
+                        }
+                        var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+                        var timer = null;
+                        win.addEventListener(evt, function () {
+                                clearTimeout(timer);
+                                timer = setTimeout(setFontSize, 300);
+                        }, false);
+                        win.addEventListener("pageshow", function(e) {
+                                if (e.persisted) {
+                                        clearTimeout(timer);
+                                        timer = setTimeout(setFontSize, 300);
+                                }
+                        }, false);
+                        setFontSize();
+                }(window, document));
+        </script>
+        <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="./css/iosSelect.css">
+</head>
+
+<body>
+    <div class="form-item item-line">
+        <label>请选择银行</label>
+        <div class="pc-box">
+            <input type="hidden" name="bank_id" id="bankId" value="">
+            <span id="showBank">点击这里选择银行</span>
+        </div>
+    </div>
+</body>
+
+<script src="./js/iscroll.js"></script>
+<script src="./js/iosSelect.js"></script>
+<!-- <script src="../../merge/iosSelect.js"></script> -->
+<script type="text/javascript">
+var data = [
+    {'id': '10001', 'value': '工商银行'},
+    {'id': '10002', 'value': '农业银行'},
+    {'id': '10003', 'value': '建设银行'},
+    {'id': '10004', 'value': '中国银行'},
+    {'id': '10005', 'value': '交通银行'},
+    {'id': '10006', 'value': '浦发银行'},
+    {'id': '10007', 'value': '上海银行'},
+    {'id': '10008', 'value': '汇丰银行'},
+
+    {'id': '10009', 'value': '光大银行'},
+    {'id': '10010', 'value': '招商银行'},
+    {'id': '10011', 'value': '中信银行'},
+    {'id': '10012', 'value': '民生银行'},
+    {'id': '10013', 'value': '平安银行'},
+    {'id': '10014', 'value': '华夏银行'},
+    {'id': '10015', 'value': '广发银行'},
+    {'id': '10016', 'value': '北京银行'}
+];
+
+var showBankDom = document.querySelector('#showBank');
+var bankIdDom = document.querySelector('#bankId');
+showBankDom.addEventListener('click', function() {
+    var bankId = showBankDom.dataset['id'];
+    var bankName = showBankDom.dataset['value'];
+
+    var bankSelect = new IosSelect(1, [data], {
+        container: '.container',
+        title: '银行卡选择',
+        itemHeight: 40,
+        itemShowCount: 5,
+        oneLevelId: bankId,
+        callback: function(selectOneObj) {
+            callback(selectOneObj);
+        }
+    });
+});
+
+function callback(rs){
+    console.log(rs);
+}
+</script>
+</body>
+
+</html>
